@@ -1,0 +1,19 @@
+# Filename:gsm.gam
+# export classpath:
+# Title:Gsm
+# background:
+# cant units:0
+# Cant Ports:2
+# 	Port Class:gui.model.port.AtomicPort
+# 	Port UniqueId:22
+# 	Port ID:callIn
+# 	Port In/Out:In
+# 	Port Type:Integer
+# 	Port Class:gui.model.port.AtomicPort
+# 	Port UniqueId:23
+# 	Port ID:gsmOut
+# 	Port In/Out:Out
+# 	Port Type:Integer
+# Cant Links:0
+# Initial Name:
+# Vars cant:0

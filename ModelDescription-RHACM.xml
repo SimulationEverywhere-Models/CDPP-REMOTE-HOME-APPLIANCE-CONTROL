@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Models>
+	<Model name="RHACM" type="coupled" description="a coupled model for a simple "Remote Home Appliance Control"/>
+		<Inputs>
+			<Port name="callIn" type="int" description="a call from the homeowner containing frequency information"/>	
+		</Inputs>
+		<Outputs>
+			<Port name="r1Out" type="int" description="Realy1 switched"/>
+			<Port name="r2Out" type="int" description="Realy2 switched"/>
+			<Port name="r3Out" type="int" description="Realy3 switched"/>
+			<Port name="scOut" type="int" description=" Record output telling which appliance was switched"/>
+		</Outputs>
+		<Files>	
+			<File name="RHACM.ma" type="MA" location="/"/>
+			<File name="rhacm.ev" type="EV" location="/"/>
+			<File name="RHACMLOG.log" type="LOG" location="/"/>
+			
+		</Files>
+	</Model>
+	<Model name="Control" type="coupled" description="a coupled model to convert the frequency and control relays and soundch"/>
+		<Inputs>
+			<Port name="dIn" type="int" description="receives frequency to be converted"/>
+						
+		</Inputs>
+		<Outputs>
+			<Port name="m1Out" type="int" description="control signal to Realy1"/>
+			<Port name="m2Out" type="int" description="control signal to Realy2"/>
+			<Port name="m3Out" type="int" description="control signal to Realy3"/>
+			<Port name="m4Out" type="int" description="control signal to soundch"/>			
+		</Outputs>
+		<Files>
+			<File name="control.ma" type="MA" location="/"/>
+			<File name="control.ev" type="EV" location="/"/>
+			<File name="controlLOG.log" type="LOG" location="/"/>
+		</Files>
+	</Model>
+	<Model name="Gsm" type="atomic" description="a model to receive certain dual tone frequencies and output same"/>
+		<Inputs>
+			<Port name="callIn" type="int" description="a call from the homeowner containing frequency information"/>	
+		</Inputs>
+		<Outputs>
+			<Port name="gsmOut" type="int" description="frequency output"/>
+		</Outputs>
+		<Files>
+			<File name="gsm.h" type="H" location="/"/>
+			<File name="gsm.cpp" type="CPP" location="/"/>
+			<File name="gsm.ma" type="MA" location="/"/>		
+			<File name="gsm.ev" type="EV" location="/"/>			
+			<File name="gsmLOG.log" type="LOG" location="/"/>
+		</Files>
+	</Model>
+	<Model name="Dtmf" type="atomic" description="a model to convert frequency to a decimal/binary number"/>
+		<Inputs>
+			<Port name="dIn" type="int" description="input frequency to be converted"/>	
+		</Inputs>
+		<Outputs>
+			<Port name="dOut" type="int" decimal corresponding to converted frequency"/>
+		</Outputs>
+		<Files>
+			<File name="dtmf.h" type="H" location="/"/>
+			<File name="dtmf.cpp" type="CPP" location="/"/>
+			<File name="dtmf.ma" type="MA" location="/"/>		
+			<File name="dtmf.ev" type="EV" location="/"/>			
+			<File name="dtmfLOG.log" type="LOG" location="/"/>
+		</Files>
+	</Model>
+	<Model name="Mcu" type="atomic" description="a model to decide which outputs send information to other models"/>
+		<Inputs>
+			<Port name="mcuIn" type="int" description="receives a converted frequency from the DTMF"/>	
+		</Inputs>
+		<Outputs>
+			<Port name="m1Out" type="int" description="control signal to Realy1"/>
+			<Port name="m2Out" type="int" description="control signal to Realy2"/>
+			<Port name="m3Out" type="int" description="control signal to Realy3"/>
+			<Port name="m4Out" type="int" description="control signal to soundch"/>
+		</Outputs>
+		<Files>
+			<File name="mcu.h" type="H" location="/"/>
+			<File name="mcu.cpp" type="CPP" location="/"/>
+			<File name="mcuMA.ma" type="MA" location="/"/>		
+			<File name="mcu.ev" type="EV" location="/"/>			
+			<File name="mcuLOG.log" type="LOG" location="/"/>
+		</Files>
+	</Model>
+	<Model name="Relay1" type="atomic" description="a model receive and input and decide whether to send a 0 or 1 to the output"/>
+		<Inputs>
+			<Port name="r1In" type="int" description="input signal from the control model"/>	
+		</Inputs>
+		<Outputs>
+			<Port name="r1Out" type="int" description="used to output a 0 or a 1 to turn OFF ot turn ON connected appliance"/>
+		</Outputs>
+		<Files>
+			<File name="relay1.h" type="H" location="/"/>
+			<File name="relay1.cpp" type="CPP" location="/"/>
+			<File name="relay1MA.ma" type="MA" location="/"/>		
+			<File name="relay1.ev" type="EV" location="/"/>			
+			<File name="relay1LOG.log" type="LOG" location="/"/>
+		</Files>
+	</Model>
+	<Model name="Relay2" type="atomic" description="a model receive and input and decide whether to send a 0 or 1 to the output"/>
+		<Inputs>
+			<Port name="r2In" type="int" description="input signal from the control model"/>	
+		</Inputs>
+		<Outputs>
+			<Port name="r2Out" type="int" description="used to output a 0 or a 1 to turn OFF ot turn ON connected appliance"/>
+		</Outputs>
+		<Files>
+			<File name="relay2.h" type="H" location="/"/>
+			<File name="relay2.cpp" type="CPP" location="/"/>
+			<File name="relay2MA.ma" type="MA" location="/"/>		
+			<File name="relay2.ev" type="EV" location="/"/>			
+			<File name="relay2LOG.log" type="LOG" location="/"/>
+		</Files>
+	</Model>
+	<Model name="Relay3" type="atomic" description="a model receive and input and decide whether to send a 0 or 1 to the output"/>
+		<Inputs>
+			<Port name="r3In" type="int" description="input signal from the control model"/>	
+		</Inputs>
+		<Outputs>
+			<Port name="r3Out" type="int" description="used to output a 0 or a 1 to turn OFF ot turn ON connected appliance"/>
+		</Outputs>
+		<Files>
+			<File name="relay3.h" type="H" location="/"/>
+			<File name="relay3.cpp" type="CPP" location="/"/>
+			<File name="relay3MA.ma" type="MA" location="/"/>		
+			<File name="relay3.ev" type="EV" location="/"/>			
+			<File name="relay3LOG.log" type="LOG" location="/"/>
+		</Files>
+	</Model>
+	<Model name="Soundch" type="atomic" description="a model output a prerecorded sound based on its input"/>
+		<Inputs>
+			<Port name="scIn" type="int" description="input signal from the control model"/>	
+		</Inputs>
+		<Outputs>
+			<Port name="scOut" type="int" description="outputs an integer corresponding to a recording"/>
+		</Outputs>
+		<Files>
+			<File name="soundch.h" type="H" location="/"/>
+			<File name="soundch.cpp" type="CPP" location="/"/>
+			<File name="soundchMA.ma" type="MA" location="/"/>		
+			<File name="soundch.ev" type="EV" location="/"/>			
+			<File name="soundchLOG.log" type="LOG" location="/"/>
+		</Files>

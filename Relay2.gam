@@ -1,0 +1,19 @@
+# Filename:Relay2.gam
+# export classpath:
+# Title:Relay2
+# background:
+# cant units:0
+# Cant Ports:2
+# 	Port Class:gui.model.port.AtomicPort
+# 	Port UniqueId:28
+# 	Port ID:r2In
+# 	Port In/Out:In
+# 	Port Type:Integer
+# 	Port Class:gui.model.port.AtomicPort
+# 	Port UniqueId:29
+# 	Port ID:r2Out
+# 	Port In/Out:Out
+# 	Port Type:Integer
+# Cant Links:0
+# Initial Name:
+# Vars cant:0
